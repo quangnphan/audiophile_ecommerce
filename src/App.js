@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import EarphonePage from "./pages/EarphonePage";
+import HeadphonePage from "./pages/HeadphonePage";
+import SpeakerPage from "./pages/SpeakerPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import SingleProductPage from "./pages/SingleProductPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/earphones" element={<EarphonePage />} />
+          <Route exact path="/headphones" element={<HeadphonePage />} />
+          <Route exact path="/speakers" element={<SpeakerPage />} />
+          <Route exact path="/checkout" element={<CheckoutPage />} />
+          <Route exact path='/product/:id' element={<SingleProductPage />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 }
 
