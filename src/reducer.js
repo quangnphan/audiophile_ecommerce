@@ -82,12 +82,14 @@ const reducer = (state, action) => {
       .filter((cartItem) => cartItem.amount !== 0);
     return { ...state, cart: tempCart };
   }
-    if(action.type === "COUNT_VAT"){
-
-    }
-    if(action.type === "COUNT_GRAND_TOTAL"){
-
-    }
+  if(action.type === "COUNT_VAT"){
+    const calculatedVat = state.total_price * 0.2;
+    return {...state,vat: calculatedVat}
+  }
+  if(action.type === "COUNT_GRAND_TOTAL"){
+    const grandTotal = state.total_price + state.shipping;
+    return {...state,grand_total: grandTotal}
+  }
   throw new Error(`No matching "${action.type}" action type.`);
 };
 

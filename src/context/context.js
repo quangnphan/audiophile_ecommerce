@@ -66,9 +66,9 @@ export const ContextProvider = ({ children }) => {
   };
 
   useEffect(()=>{
-    // dispatch({type: "COUNT_GRAND_TOTAL"});
-    // dispatch({type: "COUNT_VAT"});
     dispatch({type: "GET_CART_TOTAL"});
+    dispatch({type: "COUNT_VAT"});
+    dispatch({type: "COUNT_GRAND_TOTAL"});
     localStorage.setItem("cart",JSON.stringify(state.cart));
   },[state.cart])
 
