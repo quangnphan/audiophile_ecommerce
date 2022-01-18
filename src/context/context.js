@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useReducer } from "react";
-import { useEffect } from "react/cjs/react.development";
+import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { data } from "../context/mockData/data";
 import reducer from "../reducer";
 
