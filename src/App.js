@@ -8,12 +8,14 @@ import HeadphonePage from "./pages/HeadphonePage";
 import SpeakerPage from "./pages/SpeakerPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import SingleProductPage from "./pages/SingleProductPage";
+import Sidebar from "./components/Sidebar"
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Navbar />
+        <Sidebar />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/earphones" element={<EarphonePage />} />

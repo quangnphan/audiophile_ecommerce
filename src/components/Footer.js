@@ -9,27 +9,29 @@ const Footer = () => {
   return (
     <section className="footer">
       <div className="footer-wrapper">
-        <div className="footer-content">
-          <img src={logo} alt="logo"></img>
-          <p>
-            Audiophile is an all in one stop to fulfill your audio needs. We're
-            a small team of music lovers and sound specialists who are devoted
-            to helping you get the most out of personal audio. Come and visit
-            our demo facility - we’re open 7 days a week.
-          </p>
-          <p>Copyright {year}. All rights reserved</p>
-        </div>
-        <div className="footer-links">
+        <div className="footer-top">
+          <img className="logo" src={logo} alt="logo"></img>
           <ul className="links">
             {links.map((link) => {
               const { id, text, url } = link;
               return (
                 <li key={id}>
-                  <Link className="link" to={url}>{text}</Link>
+                  <Link className="link" to={url}>
+                    {text}
+                  </Link>
                 </li>
               );
             })}
           </ul>
+        </div>
+        <p className="about">
+          Audiophile is an all in one stop to fulfill your audio needs. We're a
+          small team of music lovers and sound specialists who are devoted to
+          helping you get the most out of personal audio. Come and visit our
+          demo facility - we’re open 7 days a week.
+        </p>
+        <div className="footer-bottom">
+          <p>Copyright {year}. All rights reserved</p>
           <div className="social-links">
             <ul className="links">
               <li>

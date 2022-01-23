@@ -19,6 +19,7 @@ const initialState = {
   single_product: {},
   cart: checkLocalStorage(),
   isCartOpen: false,
+  isSideBarOpen: false,
   total_amount:0,
   total_price: 0,
   vat: 0,
@@ -44,6 +45,10 @@ export const ContextProvider = ({ children }) => {
   const toggleCart = () => {
     dispatch({ type: "TOGGLE_CART" });
   };
+
+  const toggleSideBar = () => {
+    dispatch({type: "TOGGLE_SIDE_BAR"})
+  }
 
   const clearCart = () => {
     dispatch({ type: "CLEAR_CART" });
@@ -77,6 +82,7 @@ export const ContextProvider = ({ children }) => {
         ...state,
         getSingleProduct,
         toggleCart,
+        toggleSideBar,
         clearCart,
         addToCart,
         toggleAmount,

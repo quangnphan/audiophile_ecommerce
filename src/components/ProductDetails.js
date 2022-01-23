@@ -18,7 +18,7 @@ const ProductDetails = (data) => {
     <section className="product-details">
       <div>
         <img className="product-img"
-          src={width >= 1200 ? desktop : width >= 768 ? tablet : mobile}
+          src={width >= 1200 ? desktop : width >= 830 ? tablet : mobile}
           alt="img"
         ></img>
       </div>

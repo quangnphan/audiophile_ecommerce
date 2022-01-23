@@ -175,7 +175,7 @@ button{
   min-height: 100vh;
   margin-top: -100px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 350px) {
   .hero-wrapper {
     background-size: cover;
     margin-bottom: 10rem;
@@ -253,7 +253,6 @@ button{
   background-color: hsl(0, 0%, 95%);
   text-align: center;
   padding: 20% 0 7% 0;
-  height: 160px;
   border-radius: 8px;
 }
 .card-wrapper .product-img {
@@ -283,6 +282,7 @@ button{
   border-radius: 8px;
   position: relative;
   margin-bottom: 20px;
+  background-size: cover;
 }
 .zx9 {
   background-color: hsl(22, 65%, 57%);
@@ -398,57 +398,55 @@ button{
   color: white;
   position: relative;
 }
-.footer-content::after {
-  content: "";
-  width: 6.25rem;
-  height: 0.25rem;
-  position: absolute;
-  background-color: hsl(22, 65%, 57%);
-  top: -40px;
-  left: 0;
-}
-.footer-wrapper {
+.footer-wrapper{
   width: 90vw;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: auto;
   padding: 40px 0;
+}
+.footer-top{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-.footer-content {
-  flex: 50%;
-  color: hsl(0, 4%, 70%);
-  font-weight: 300;
-  position: relative;
-}
-.footer-content p {
-  margin-top: 50px;
-  opacity: 0.8;
-  width: 80%;
-}
-.footer-links {
-  flex: 50%;
+.links{
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.footer-links .links {
-  display: flex;
-  justify-content: flex-end;
   gap: 30px;
-  font-size: 1.2rem;
-  font-weight: 500;
+  text-transform: uppercase;
+  font-weight: 700;
 }
-.footer-links .link {
-  color: hsl(0, 0%, 95%);
+.links li a{
+  color: white;
 }
-.link:hover{
-  color:hsl(22, 65%, 57%);
+.links a:hover{
   transition: 0.7s all;
+  color: hsl(22, 65%, 57%);
 }
-.social-links img:hover{
-  filter: invert(0.5);
+.footer-wrapper .about{
+  width: 50%;
+  margin: 30px 0;
+  line-height: 1.5;
+}
+.footer-wrapper p{
+  color:hsl(0, 0%, 50%);
+}
+.footer-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom .links img:hover{
   transition: 0.7s all;
+  filter: invert(50%);
+}
+.footer-wrapper::after{
+  content: '';
+  position: absolute;
+  background-color: hsl(22, 65%, 57%);
+  width: 6.25rem;
+  height: 0.25rem;
+  top: 0;
+  display: block;
 }
 
 /*pages*/
@@ -512,7 +510,7 @@ button{
   align-items: center;
   gap: 100px;
 }
-.product-img{
+.product-details .product-img{
   width: 500px;
   border-radius: 8px;
 }
@@ -624,13 +622,20 @@ button{
 .others-flex{
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 .others h4{
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 30px;
   text-transform: uppercase;
+}
+.others-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .others-item img{
   width: 350px;
@@ -641,12 +646,6 @@ button{
   font-size: 1.8rem;
   font-weight: 500;
   text-transform: uppercase;
-}
-.others-item{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 /*checkout page*/
@@ -792,4 +791,252 @@ input.address{
   width: 80%;
   text-align: justify;
   font-weight: 500;
+}
+/*hamburger*/
+.burger-wrapper{
+  width: 16px;
+  height: 15px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: none;
+}
+.burger{
+  background-color:hsl(0, 0%, 95%);
+  transition: all 0.3s ease-in-out;
+  width: 16px;
+  height: 3px;
+  position: relative;
+}
+.burger::before,
+.burger::after{
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 3px;
+  background-color:hsl(0, 0%, 95%);
+  transition: all 0.3s ease-in-out;
+}
+.burger::after{
+  transform: translateY(-6px);
+}
+.burger::before{
+  transform: translateY(6px);
+}
+.open{
+  transform:translateX(-20px);
+  background: transparent;
+}
+.open::before{
+  transform: rotate(45deg) translate(15px,-15px);
+}
+.open::after{
+  transform: rotate(-45deg) translate(15px,15px);
+}
+/*sidebar*/
+@media(min-width: 830px){
+  aside{
+    display: none;
+  }
+}
+aside{
+  z-index: 99999;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(-100vw);
+  overflow: auto;
+}
+.show-sidebar{
+  transform: translateX(0);
+}
+.show-sidebar ul{
+  background-color:hsl(0, 0%, 100%);
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(14rem,1fr));
+  gap: 3rem;
+  padding: 5rem 1.5rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  overflow: auto;
+}
+
+@media(max-width:830px){
+  nav{
+    display: none;
+  }
+  .hero-wrapper{
+    text-align: center;
+  }
+  .hero-container h1{
+    max-width: 100%;
+    font-size: 4rem;
+  }
+  .hero-container p{
+    max-width: 100%;
+  }
+  .burger-wrapper{
+    display: flex;
+  }
+  .show-sidebar .card-wrapper .product-img{
+    top: -25%;
+    width: 40%;
+  }
+  .products-wrapper{
+    grid-template-columns: repeat(auto-fit,minmax(14rem,1fr));
+    gap: 5rem;
+  }
+  .products-wrapper .card-wrapper .product-img{
+    top: -40%;
+    width: 45%;
+  }
+  .zx9{
+    flex-direction: column;
+    text-align: center;
+    background-position: center;
+  }
+  .zx9 h3{
+    margin-top: 20px;
+  }
+  .zx9 p{
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  .yx1{
+    padding: 100px 50px;
+  }
+  .about{
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .about .content h3{
+    font-size: 2rem;
+    margin: 1.5rem 0;
+  }
+  .about .content p{
+    margin: auto;
+  }
+  .footer-wrapper::after{
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .footer-top{
+    flex-direction: column;
+  }
+  .footer-top .links{
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-top .logo{
+    margin-bottom: 30px;
+  }
+  .footer-wrapper .about{
+    width: 100%;
+    margin: 50px 0;
+  }
+  .footer-bottom{
+    flex-direction: column;
+    gap: 50px;
+  }
+  .product-flex{
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  .product-flex img{
+    width: 600px;
+    height: auto;
+  }
+  .product-details{
+    flex-direction: column;
+    gap: 50px;
+  }
+  .product-details .product-img{
+    width: 100%;
+    height: 500px;
+  }
+  .product-features{
+    flex-direction: column;
+    gap: 50px;
+  }
+  .about .content p{
+    width: 100%;
+  }
+  .gallery{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .gallery .img-3{
+    margin-left: 0;
+  }
+  .others-flex{
+    justify-content: center;
+    gap: 4rem;
+  }
+  .others-item img{
+    width: 300px;
+  }
+  .others-item h5{
+    font-size: 1.5rem;
+  }
+  .checkout-main{
+    flex-direction: column;
+  }
+  input.address{
+    width: 300px;
+  }
+  .cash img{
+    width: 55px;
+    height: 55px;
+  }
+  .emoney{
+    flex-direction: column;
+  }
+  @media(max-width: 500px){
+    .hero-container h1{
+      font-size: 3rem;
+    }
+    .product-flex img{
+      width: 370px;
+      height: 370px;
+    }
+    .product-details .product-img{
+      width: 370px;
+      height: 370px;
+    }
+    .zx9{
+      padding: 50px 15px;
+    }
+    .zx9 img{
+      width: unset;
+      height: 200px;
+    }
+    .zx9 p{
+      width: 100%;
+    }
+    .zx9 h3,
+    .zx7 h4,
+    .yx1 h4{
+      font-size: 2rem;
+    }
+    .yx1-flex{
+      flex-direction: column;
+    }
+    .zx7{
+      padding: 100px 15px;
+    }
+    .yx1{
+      padding: 40px;
+    }
+    .about img{
+      height: 330px;
+    }
+    .about .content p{
+      width: 100%;
+    }
+  }
 }
